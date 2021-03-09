@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx ./scripts/transform.js"
+    "build": "./scripts/transform-qui.sh && ./scripts/transform-qbat.sh && eleventy"
   },
   "keywords": [],
   "author": "",
