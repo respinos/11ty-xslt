@@ -1,5 +1,15 @@
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <xsl:output method="xml" version="1.0" encoding="utf-8" indent="yes" />
+  <!-- <xsl:output method="html" version="1.0" encoding="utf-8" indent="yes" /> -->
+
+  <xsl:output
+    method="xml"
+    indent="yes"
+    encoding="utf-8"
+    doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"
+    doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
+    omit-xml-declaration="yes"
+    version="5.0"
+    />
 
   <xsl:template match="/">
     <html>
