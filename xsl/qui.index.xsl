@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl" xmlns:qui="http://dlxs.org/quombat/ui">
+<xsl:stylesheet version="1.0" xmlns:xhtml="http://dlxs.org/quombat/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl" xmlns:qui="http://dlxs.org/quombat/ui">
 
   <!-- <xsl:import href="social.wireframe.xsl" /> -->
 
   <xsl:template match="Top">
-    <qui:root xmlns="http://www.w3.org/1999/xhtml">
+    <qui:root>
       <!-- fills html/head-->
       <qui:head>
         <qui:title>
@@ -100,7 +100,7 @@
       <qui:thumbnail-list>
         <xsl:for-each select="//Snapshot">
           <qui:link href="{@href}">
-            <img src="{Thumbnail/@src}">
+            <xhtml:img src="{Thumbnail/@src}">
               <!-- <xsl:attribute name="alt">
                 <xsl:for-each select="Record//Value">
                   <xsl:value-of select="." />
@@ -109,15 +109,15 @@
                   </xsl:if>
                 </xsl:for-each>
               </xsl:attribute> -->
-            </img>
-            <span>
+            </xhtml:img>
+            <xhtml:span>
               <xsl:for-each select="Record//Value">
                 <xsl:value-of select="." />
                 <xsl:if test="position() &lt; last()">
                   <xsl:text> / </xsl:text>
                 </xsl:if>
               </xsl:for-each>
-            </span>
+            </xhtml:span>
           </qui:link>
         </xsl:for-each>
       </qui:thumbnail-list>
@@ -199,7 +199,7 @@
   </xsl:template>
 
   <xsl:template match="node()[name()]" mode="copy" priority="99">
-    <xsl:element name="{name()}" namespace="http://www.w3.org/1999/xhtml">
+    <xsl:element name="xhtml:{name()}">
       <xsl:apply-templates select="*|@*|text()" mode="copy" />
     </xsl:element>
   </xsl:template>

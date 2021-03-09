@@ -1,4 +1,4 @@
-<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://dlxs.org/quombat/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui">
   <!-- <xsl:output method="html" version="1.0" encoding="utf-8" indent="yes" /> -->
 
   <xsl:output
@@ -139,6 +139,12 @@
 
   <xsl:template match="node()" mode="copy-guts">
     <xsl:apply-templates select="*|text()" mode="copy" />
+  </xsl:template>
+
+  <xsl:template match="node()[namespace-uri() = 'http://dlxs.org/quombat/xhtml']" mode="copy" priority="99">
+    <xsl:element name="{name()}" namespace="http://www.w3.org/1999/xhtml">
+      <xsl:apply-templates select="*|@*|text()" mode="copy" />
+    </xsl:element>
   </xsl:template>
 
   <xsl:template match="@*|*|text()" mode="copy">

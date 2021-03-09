@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0" xmlns:xhtml="http://dlxs.org/quombat/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <xsl:variable name="title">
     <xsl:choose>
@@ -55,7 +55,7 @@
   <xsl:template name="build-social-twitter">
     <!-- requires a description -->
     <xsl:if test="normalize-space($description)">
-      <meta name="twitter:card">
+      <xhtml:meta name="twitter:card">
         <xsl:attribute name="content">
           <xsl:choose>
             <xsl:when test="//MediaInfo/m_entryauth = 'WORLD'">
@@ -66,16 +66,16 @@
             </xsl:otherwise>
           </xsl:choose>
         </xsl:attribute>
-      </meta>
-      <meta name="twitter:site" content="@umichlibrary" />
-      <meta name="twitter:url">
+      </xhtml:meta>
+      <xhtml:meta name="twitter:site" content="@umichlibrary" />
+      <xhtml:meta name="twitter:url">
         <xsl:attribute name="content">
           <xsl:value-of select="/Top/ItemUrl" />
         </xsl:attribute>
-      </meta>
+      </xhtml:meta>
 
       <xsl:if test="normalize-space($description)">
-        <meta name="twitter:description" content="{normalize-space($description)}" />
+        <xhtml:meta name="twitter:description" content="{normalize-space($description)}" />
       </xsl:if>
       <xsl:if test="normalize-space($title)">
         <meta name="twitter:title" content="{//CollName/Full}: {normalize-space($title)}" />
@@ -83,7 +83,7 @@
 
       <xsl:choose>
         <xsl:when test="//MediaInfo/m_entryauth = 'WORLD'">
-          <meta name="twitter:image" content="{//MediaInfo/MediaHost}{//MediaInfo//MediaLink}" />
+          <xhtml:meta name="twitter:image" content="{//MediaInfo/MediaHost}{//MediaInfo//MediaLink}" />
         </xsl:when>
         <xsl:otherwise />
       </xsl:choose>
@@ -92,9 +92,9 @@
   </xsl:template>
 
   <xsl:template name="build-social-facebook">
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="{//CollName/Full}" />
-    <meta property="og:url">
+    <xhtml:meta property="og:type" content="website" />
+    <xhtml:meta property="og:site_name" content="{//CollName/Full}" />
+    <xhtml:meta property="og:url">
       <xsl:attribute name="content">
         <xsl:choose>
           <xsl:when test="//Param[@name='page'] = 'index'">
@@ -105,15 +105,15 @@
           </xsl:when>
         </xsl:choose>
       </xsl:attribute>
-    </meta>
+    </xhtml:meta>
 
     <xsl:if test="normalize-space($title)">
-      <meta property="og:title" content="{normalize-space($title)}" />
+      <xhtml:meta property="og:title" content="{normalize-space($title)}" />
     </xsl:if>
 
     <xsl:choose>
       <xsl:when test="//MediaInfo/m_entryauth = 'WORLD'">
-        <meta property="og:image" content="{//MediaInfo/MediaHost}{//MediaInfo//MediaLink}" />
+        <xhtml:meta property="og:image" content="{//MediaInfo/MediaHost}{//MediaInfo//MediaLink}" />
       </xsl:when>
       <xsl:otherwise />
     </xsl:choose>
