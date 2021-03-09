@@ -1,0 +1,21 @@
+{
+  "name": "11ty-xslt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx ./scripts/transform.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.11.1",
+    "gulp": "^4.0.2"
+  },
+  "dependencies": {
+    "libxmljs": "^0.19.7",
+    "xslt-processor": "^0.11.5"
+  }
+}
